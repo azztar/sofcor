@@ -1,0 +1,1043 @@
+:root {
+    --color-bg-primary: #0c0c0c;
+    --color-bg-secondary: #121212;
+    --color-bg-tertiary: #1a1a1a;
+    --color-accent-primary: #00a8ff;
+    /* Cambiado de #64ffda a azul neón */
+    --color-accent-secondary: #0080ff;
+    /* Ajustado para complementar */
+    --color-accent-tertiary: #7928ca;
+    --color-text-primary: #f0f0f0;
+    --color-text-secondary: #a0a0a0;
+    --color-text-tertiary: #6a6a6a;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    overflow-x: hidden;
+}
+
+/* Gradiente mejorado - cambiando a tonos azules */
+.text-neon-gradient {
+    background: linear-gradient(90deg, #00a8ff, #0080ff, #7c3aed);
+    /* Colores más vibrantes y modernos */
+    text-shadow: 0 0 10px rgba(0, 168, 255, 0.4);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: gradient-animation 15s ease infinite;
+    /* Más lento para mayor elegancia */
+}
+
+/* Estilo base */
+html {
+    scroll-behavior: smooth;
+}
+
+h1,
+h2,
+h3 {
+    font-weight: 600;
+}
+
+h4,
+h5,
+h6 {
+    font-weight: 500;
+}
+
+p,
+a,
+span,
+li {
+    font-weight: 400;
+}
+
+button,
+.button-like {
+    font-weight: 500;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.text-neon-cyan {
+    color: #00a8ff;
+    /* Cambiado de #64ffda */
+    text-shadow: 0 0 8px rgba(0, 168, 255, 0.3);
+}
+
+.border-neon-cyan {
+    border-color: #00a8ff;
+    /* Cambiado de #64ffda */
+}
+
+.hover\:border-neon-cyan:hover {
+    border-color: #00a8ff;
+    /* Cambiado de #64ffda */
+}
+
+.hover\:text-neon-cyan:hover {
+    color: #00a8ff;
+    /* Cambiado de #64ffda */
+}
+
+/* --- MEJORADO: Contenedor para fondo animado --- */
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    background: linear-gradient(to bottom, #000000, #040812);
+}
+
+/* Ajustes para el fondo animado */
+#hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #040812, #000000);
+}
+
+/* Para asegurar que el contenido quede por encima */
+.relative.z-10 {
+    position: relative;
+    z-index: 10;
+}
+
+/* Asegurar que el contenido quede por encima */
+section.min-h-screen>div.container,
+section.min-h-screen>div.relative {
+    position: relative;
+    z-index: 10;
+}
+
+/* --- NUEVO: Estilos para las partículas --- */
+.particle {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(100, 255, 218, 0.3);
+    /* Color cian tenue */
+    width: 4px;
+    /* Tamaño pequeño */
+    height: 4px;
+    opacity: 0;
+    /* Empiezan invisibles, anime.js controla la opacidad */
+}
+
+/* Opcional: Partículas de diferentes colores */
+.particle.p2 {
+    background-color: rgba(229, 46, 113, 0.3);
+}
+
+/* Rosa tenue */
+.particle.p3 {
+    background-color: rgba(106, 13, 173, 0.3);
+}
+
+/* Morado tenue */
+
+
+/* Estilos de Menú Flotante Compacto */
+header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    background-color: transparent;
+    /* Garantizar que sea transparente */
+}
+
+nav.floating-nav {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgba(10, 10, 10, 0.75);
+    /* Ligeramente más transparente */
+    backdrop-filter: blur(10px);
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    border: 1px solid rgba(55, 65, 81, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: background-color 0.3s ease;
+}
+
+@media (max-width: 767px) {
+    nav.floating-nav {
+        max-width: 100%;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+    }
+
+    header.site-header {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+nav.floating-nav a.nav-link {
+    color: #a8b2d1;
+    transition: color 0.3s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.375rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+}
+
+nav.floating-nav a.nav-link:hover {
+    color: #64ffda;
+}
+
+nav.floating-nav a.nav-link:hover svg {
+    stroke: #00a8ff;
+    transform: translate(2px, -2px);
+}
+
+nav.floating-nav a.nav-link svg {
+    width: 0.875em;
+    height: 0.875em;
+    stroke: #a8b2d1;
+    transition: stroke 0.3s ease-in-out, transform 0.3s ease-in-out;
+    margin-left: 1px;
+}
+
+/* Actualización para el icono de menú hamburguesa con efecto neón */
+.hamburger-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    color: #00c3ff;
+    /* Color azul neón brillante */
+}
+
+.hamburger-button:hover {
+    background-color: rgba(0, 195, 255, 0.1);
+    color: #18eaea;
+    /* Color ligeramente diferente al hacer hover */
+}
+
+.hamburger-button .menu-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.75;
+    /* Línea un poco más fina para efecto neón */
+    stroke: currentColor;
+    filter: drop-shadow(0 0 2px rgba(0, 195, 255, 0.8));
+    /* Efecto de resplandor */
+}
+
+.hamburger-button:hover .menu-icon {
+    filter: drop-shadow(0 0 3px rgba(0, 195, 255, 1));
+    transform: scale(1.05);
+    /* Ligero efecto de escalado al pasar el mouse */
+}
+
+.hamburger-button .menu-text {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 5px rgba(0, 195, 255, 0.5);
+    /* Texto con brillo */
+}
+
+.card-bg {
+    background-color: rgba(18, 18, 18, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: left 0.7s ease;
+}
+
+.card-bg:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(0, 168, 255, 0.2),
+        0 0 20px rgba(0, 168, 255, 0.15);
+    border-color: rgba(0, 168, 255, 0.3);
+}
+
+.card-bg:hover::before {
+    left: 100%;
+}
+
+.section-bg {
+    background-color: #050505;
+}
+
+.button-like {
+    transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out, transform 0.2s ease-out;
+    box-shadow: 0 0 0px rgba(100, 255, 218, 0);
+}
+
+.button-like:hover {
+    box-shadow: 0 0 8px rgba(0, 168, 255, 0.7), 0 0 16px rgba(0, 168, 255, 0.5), 0 0 24px rgba(0, 168, 255, 0.3);
+    transform: translateY(-2px) scale(1.01);
+    animation: pulse-glow 1.5s infinite alternate;
+}
+
+.button-like.bg-white:hover {
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7), 0 0 16px rgba(255, 255, 255, 0.5), 0 0 24px rgba(255, 255, 255, 0.3);
+}
+
+.button-like.border-gray-600:hover {
+    box-shadow: 0 0 8px rgba(168, 178, 209, 0.5), 0 0 16px rgba(168, 178, 209, 0.3);
+    border-color: #a8b2d1;
+}
+
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 6px rgba(0, 168, 255, 0.6), 0 0 12px rgba(0, 168, 255, 0.4), 0 0 18px rgba(0, 168, 255, 0.2);
+    }
+
+    to {
+        box-shadow: 0 0 10px rgba(0, 168, 255, 0.8), 0 0 20px rgba(0, 168, 255, 0.6), 0 0 30px rgba(0, 168, 255, 0.4);
+    }
+}
+
+.hero-title .letter {
+    display: inline-block;
+    line-height: 1em;
+    opacity: 0;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+.fade-in-up {
+    transform: translateY(40px);
+}
+
+.fade-in-left {
+    transform: translateX(-40px);
+}
+
+.fade-in-right {
+    transform: translateX(40px);
+}
+
+.scale-in {
+    transform: scale(0.9);
+}
+
+#mobile-menu {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    transform-origin: top;
+}
+
+#mobile-menu:not(.is-open) {
+    transform: scaleY(0.95);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#mobile-menu.is-open {
+    transform: scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Efecto de brillo para botones */
+.hover\:shadow-glow-blue:hover {
+    box-shadow: 0 0 15px rgba(0, 168, 255, 0.5), 0 0 30px rgba(0, 168, 255, 0.3);
+}
+
+/* Secciones con bordes degradados */
+.section-border {
+    position: relative;
+}
+
+.section-border::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.3), transparent);
+}
+
+/* Botones modernos con efecto de borde */
+.button-like {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.button-like::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--color-accent-primary), var(--color-accent-secondary));
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.button-like:hover::before {
+    opacity: 0.15;
+}
+
+.button-like.border {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.button-like.bg-gradient-to-r {
+    background-image: linear-gradient(to right, #0084ff, #00a8ff);
+    box-shadow: 0 4px 12px rgba(0, 168, 255, 0.15);
+    background-size: 200% auto;
+    transition: background-position 0.5s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button-like.bg-gradient-to-r:hover {
+    background-position: right center;
+}
+
+@keyframes float-slow {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(-20px) translateX(10px);
+    }
+}
+
+@keyframes float-slow-reverse {
+
+    0%,
+    100% {
+        transform: translateY(0) translateX(0);
+    }
+
+    50% {
+        transform: translateY(20px) translateX(-10px);
+    }
+}
+
+.animate-float-slow {
+    animation: float-slow 15s ease-in-out infinite;
+}
+
+.animate-float-slow-reverse {
+    animation: float-slow-reverse 18s ease-in-out infinite;
+}
+
+/* Añadir a tu CSS */
+.text-futuristic {
+    position: relative;
+    color: transparent;
+    background: linear-gradient(90deg, #59ffe6, #4481ff, #9d4edd);
+    -webkit-background-clip: text;
+    background-clip: text;
+    position: relative;
+    text-shadow: 0 0 10px rgba(89, 255, 230, 0.3);
+}
+
+.text-futuristic::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    opacity: 0.1;
+    filter: blur(3px);
+    animation: pulse 4s ease-in-out infinite;
+}
+
+.text-futuristic::after {
+    content: '';
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #59ffe6, transparent);
+    animation: horizontal-scan 6s ease infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 0.1;
+        filter: blur(3px);
+    }
+
+    50% {
+        opacity: 0.4;
+        filter: blur(6px);
+    }
+}
+
+@keyframes horizontal-scan {
+
+    0%,
+    100% {
+        transform: scaleX(0);
+    }
+
+    50% {
+        transform: scaleX(1);
+    }
+}
+
+/* Tarjetas con efecto glassmorphism avanzado */
+.card-futuristic {
+    background: rgba(15, 15, 20, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(89, 255, 230, 0.2);
+    border-radius: 16px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+        0 0 15px rgba(89, 255, 230, 0.2);
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+}
+
+.card-futuristic::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(circle at 50% 0%,
+            rgba(89, 255, 230, 0.1) 0%,
+            transparent 60%);
+    opacity: 0;
+    transition: opacity 0.7s ease;
+    pointer-events: none;
+}
+
+.card-futuristic:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        0 0 25px rgba(89, 255, 230, 0.3);
+}
+
+.card-futuristic:hover::before {
+    opacity: 1;
+}
+
+/* Mejoras responsivas adicionales */
+@media (max-width: 640px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+        line-height: 1.2;
+    }
+
+    .hero-title span.block {
+        font-size: 1.8rem !important;
+        margin-top: 0.5rem;
+    }
+
+    section.relative.min-h-screen {
+        min-height: 85vh;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .absolute.bottom-8 {
+        bottom: 1rem;
+    }
+
+    .button-like {
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .flex.justify-center.space-x-4 {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .flex.justify-center.space-x-4>* {
+        margin: 0 !important;
+    }
+
+    .card-bg {
+        padding: 1.25rem;
+    }
+
+    .py-20 {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .mb-16 {
+        margin-bottom: 2rem;
+    }
+}
+
+@media (min-width: 640px) and (max-width: 767px) {
+    .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Añadir a styles.css */
+@media (max-width: 640px) {
+
+    /* Hero sección */
+    .hero-title {
+        font-size: 2rem !important;
+        line-height: 1.2;
+    }
+
+    /* Ajuste de espaciados */
+    .py-20 {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    /* Botones más tocables */
+    .button-like {
+        min-height: 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Cards más compactas */
+    .card-bg {
+        padding: 1.25rem;
+    }
+
+    /* Reducir espaciado innecesario */
+    .mb-16 {
+        margin-bottom: 2rem;
+    }
+
+    /* Mejorar footer en móvil */
+    footer .flex {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* Añadir a styles.css */
+@media (min-width: 641px) and (max-width: 1024px) {
+
+    /* Ajustes específicos para tablets */
+    .grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .button-like {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+    }
+
+    .py-20 {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+    }
+
+    .container {
+        max-width: 90%;
+    }
+}
+
+/* Añadir a styles.css */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+        /* Tamaño base para mejor legibilidad */
+    }
+
+    h1,
+    h2,
+    h3 {
+        word-break: break-word;
+        /* Previene overflow en pantallas pequeñas */
+    }
+
+    .text-sm {
+        font-size: 0.875rem !important;
+    }
+
+    .text-lg {
+        font-size: 1.1rem !important;
+    }
+
+    .text-xl {
+        font-size: 1.25rem !important;
+    }
+
+    /* Mayor contraste para mejor accesibilidad */
+    .text-gray-400 {
+        color: #b0b0b0 !important;
+        /* Ligeramente más claro que el original */
+    }
+}
+
+/* Añade esta nueva clase para crear profundidad */
+.space-depth {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(10, 15, 30, 0.1) 0%, rgba(0, 0, 0, 0.5) 70%);
+    pointer-events: none;
+}
+
+/* Ajusta estas clases para reducir la opacidad de elementos decorativos */
+.bg-blue-400\/5 {
+    opacity: 0.02;
+}
+
+.bg-purple-400\/5 {
+    opacity: 0.02;
+}
+
+.nav-link:hover {
+    color: #00a8ff;
+    /* Cambiado de #64ffda */
+    text-shadow: 0 0 8px rgba(0, 168, 255, 0.5);
+}
+
+/* Añadir a styles.css */
+.tech-grid-bg {
+    background-image:
+        linear-gradient(rgba(0, 168, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 168, 255, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: center center;
+}
+
+/* Añadir a styles.css */
+.tech-badge {
+    box-shadow: 0 0 15px rgba(0, 168, 255, 0.15);
+    transition: all 0.3s ease;
+}
+
+.tech-badge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(0, 168, 255, 0.3);
+}
+
+/* Estilos para video responsivo mejorado */
+.video-placeholder {
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+}
+
+.video-background {
+    z-index: 5;
+    transition: opacity 0.5s ease;
+}
+
+/* Reemplazar los estilos del contenedor de video con estos */
+.video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    transform: translateY(0);
+    transition: transform 0.3s ease, opacity 0.5s ease;
+}
+
+/* Efecto parallax suave */
+.scroll-active .video-container {
+    transform: translateY(5%);
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+}
+
+/* Eliminar o comentar estos estilos que causan conflicto */
+/* .video-limiter {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(...);
+    z-index: 5;
+} */
+
+/* Crear nuevos estilos para la transición entre secciones */
+section.relative.min-h-screen::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to bottom,
+            rgba(5, 5, 5, 0) 0%,
+            rgba(5, 5, 5, 0.4) 30%,
+            rgba(5, 5, 5, 0.8) 70%,
+            #050505 100%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* Mejorar el div de transición existente */
+.h-24.relative.z-20 {
+    margin-top: -100px;
+    /* Negativo para superponer con la sección anterior */
+    background: #050505;
+    position: relative;
+    z-index: 20;
+}
+
+/* Estilos para el contenedor de video */
+.video-container {
+    position: fixed;
+    /* Cambiar a fixed para que cubra toda la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* Usar viewport height para asegurar cobertura completa */
+    overflow: hidden;
+    z-index: -1;
+    /* Poner por detrás de todo el contenido */
+}
+
+.video-background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translateX(-50%) translateY(-50%);
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+    .video-background {
+        /* Ajusta para un mejor rendimiento en móviles */
+        height: 100%;
+        width: 100%;
+        object-position: center;
+    }
+}
+
+/* Ajustes específicos para el footer en móviles */
+@media (max-width: 640px) {
+
+    /* Cambiar el comportamiento de los enlaces del footer */
+    footer .flex.justify-center.space-x-6 {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Eliminar el espacio horizontal ya que usamos grid */
+    footer .flex.justify-center.space-x-6>a {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: block;
+        text-align: center;
+        padding: 0.5rem 0;
+    }
+
+    /* Ajustar padding del footer */
+    footer.py-10 {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Mejorar la legibilidad del copyright */
+    footer p.text-sm {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+}
+
+/* Corrección para tablets */
+@media (min-width: 641px) and (max-width: 768px) {
+    footer .flex.justify-center.space-x-6 {
+        gap: 1.5rem;
+    }
+
+    footer .flex.justify-center.space-x-6>a {
+        padding: 0 0.5rem;
+    }
+}
+
+/* Añade esto al final de tu archivo CSS */
+.service-card {
+    background-color: rgba(8, 8, 12, 0.85);
+    /* Fondo más oscuro */
+    backdrop-filter: blur(20px);
+    /* Más difuminado */
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.65),
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(0, 168, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: all 0.3s ease-in-out;
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.5),
+        0 5px 10px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.7),
+        0 5px 15px rgba(0, 0, 0, 0.4),
+        0 0 25px rgba(0, 195, 255, 0.25),
+        inset 0 0 0 1px rgba(0, 195, 255, 0.2);
+    border-color: rgba(0, 195, 255, 0.3);
+}
+
+.service-card h3 {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            rgba(18, 18, 28, 0.5) 0%,
+            rgba(15, 15, 20, 0.8) 50%,
+            rgba(12, 12, 16, 0.7) 100%);
+    z-index: -1;
+}
+
+/* Añadir al final del archivo para mejorar la legibilidad del texto de tarjetas de servicio */
+
+/* Mayor legibilidad para los textos de descripción en service-card */
+.service-card p.text-gray-400 {
+    color: #c5c5c5 !important;
+    /* Más claro que el text-gray-400 original */
+    font-size: 1.05rem;
+    /* Ligeramente más grande */
+    line-height: 1.6;
+    /* Más espacio entre líneas */
+    font-weight: 400;
+    /* Normal weight para mejor legibilidad */
+    letter-spacing: 0.01em;
+    /* Ligero espaciado entre letras */
+}
+
+/* Mejora para las listas de características también */
+.service-card ul.text-gray-500 {
+    color: #b0b0b0 !important;
+    /* Más claro que el text-gray-500 original */
+}
+
+.service-card ul.text-gray-500 li {
+    margin-bottom: 0.4rem;
+    /* Más separación entre items */
+    font-size: 0.95rem;
+    /* Ligeramente más grande que el texto pequeño original */
+}
+
+/* Mejorar el contraste en tarjetas oscuras */
+.service-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.3),
+            rgba(0, 0, 0, 0));
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Ajuste específico para móviles */
+@media (max-width: 768px) {
+    .service-card p.text-gray-400 {
+        font-size: 1rem;
+    }
+
+    .service-card ul.text-gray-500 li {
+        font-size: 0.9rem;
+    }
+}
