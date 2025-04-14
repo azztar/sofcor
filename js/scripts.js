@@ -106,106 +106,54 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const video = document.getElementById("banner-video");
   const placeholder = document.querySelector(".video-placeholder");
+  const videoContainer = document.querySelector(".video-container");
 
   if (!video || !placeholder) return;
 
-  let freezeDetected = false;
-  let lastTime = 0;
-  let freezeCounter = 0;
-  const maxFreezes = 2; // Número máximo de intentos antes de usar fallback
-
-  // Monitorear si el video se congela
-  function checkVideoProgress() {
-    if (video.currentTime === lastTime && !video.paused) {
-      freezeCounter++;
-      console.log("Video congelado, intento:", freezeCounter);
-
-      if (freezeCounter >= maxFreezes) {
-        console.log("Video se congela demasiado, cambiando a imagen estática");
-        useFallback();
-        return; // Dejar de verificar
-      }
-
-      // Intentar reiniciar el video
-      video.currentTime = 0;
-      video.load();
-      video.play().catch((e) => {
-        console.error("No se pudo reproducir el video:", e);
-        useFallback();
-      });
-    } else {
-      freezeCounter = 0; // Reiniciar contador si el video continúa
+  // 1. Sistema de carga con prioridad
+  let videoLoaded = false;
+  let videoTimeout = setTimeout(function () {
+    if (!videoLoaded) {
+      console.log("Usando fallback: video tardó demasiado");
+      placeholder.style.opacity = "1";
     }
+  }, 3000);
 
-    lastTime = video.currentTime;
-  }
-
-  // Función para usar fallback
-  function useFallback() {
-    video.style.display = "none";
-    placeholder.style.opacity = "1";
-    video.pause();
-
-    // Detener el chequeo
-    if (videoCheckInterval) {
-      clearInterval(videoCheckInterval);
-    }
-  }
-
-  // Iniciar reproducción cuando el video esté listo
+  // 2. Detectar cuando el video está listo
   video.addEventListener("canplaythrough", function () {
-    // Mostrar video gradualmente
+    videoLoaded = true;
+    clearTimeout(videoTimeout);
     video.classList.remove("opacity-0");
-
-    // Verificar si el video se está ejecutando correctamente
-    let videoCheckInterval = setInterval(checkVideoProgress, 2000);
-
-    // Detener comprobación después de 30 segundos
-    setTimeout(() => {
-      if (videoCheckInterval) {
-        clearInterval(videoCheckInterval);
-      }
-    }, 30000);
+    placeholder.style.opacity = "0";
   });
 
-  // Fallar elegantemente si hay algún error
-  video.addEventListener("error", function (e) {
-    console.error("Error en la reproducción del video:", e);
-    useFallback();
-  });
-
-  // Si el video no ha cargado en 8 segundos, usar fallback
-  setTimeout(function () {
-    if (video.readyState < 3) {
-      // No suficientemente cargado
-      console.log("El video tardó demasiado en cargar");
-      useFallback();
-    }
-  }, 8000);
-
-  // Añadir en la función existente Sistema mejorado de gestión de video
+  // 3. Gestión de scroll simplificada
+  let lastScrollTop = 0;
   window.addEventListener("scroll", function () {
-    const video = document.getElementById("banner-video");
-    const serviciosSection = document.getElementById("servicios-detalle");
-    if (!video || !serviciosSection) return;
-
-    // Calcular qué tan lejos ha hecho scroll el usuario
     const scrollY = window.scrollY;
-    const serviciosBottom =
+    const serviciosSection = document.getElementById("servicios-detalle");
+    if (!serviciosSection) return;
+
+    // Solo hacer una comprobación: ¿hemos pasado completamente la sección de servicios?
+    const serviciosSectionBottom =
       serviciosSection.getBoundingClientRect().bottom + window.scrollY;
 
-    // Solo pausar cuando hayamos pasado COMPLETAMENTE la sección de servicios
-    if (scrollY > serviciosBottom) {
-      if (!video.paused) {
-        video.pause();
-      }
+    if (scrollY > serviciosSectionBottom) {
+      // Pasamos servicios - ocultar video y pausar
+      videoContainer.style.opacity = "0";
+      if (!video.paused) video.pause();
     } else {
-      if (video.paused && video.readyState >= 3) {
-        video
-          .play()
-          .catch((e) => console.error("No se pudo reanudar el video:", e));
-      }
+      // Mostrar y reproducir video
+      videoContainer.style.opacity = "1";
+      if (videoLoaded && video.paused) video.play().catch((e) => {});
     }
+  });
+
+  // 4. Manejo de errores
+  video.addEventListener("error", function () {
+    console.error("Error en el video, usando imagen estática");
+    placeholder.style.opacity = "1";
+    video.style.display = "none";
   });
 });
 

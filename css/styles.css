@@ -35,6 +35,8 @@ body {
 /* Estilo base */
 html {
     scroll-behavior: smooth;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 h1,
@@ -1039,5 +1041,41 @@ section.relative.min-h-screen::after {
 
     .service-card ul.text-gray-500 li {
         font-size: 0.9rem;
+    }
+
+    /* Ajustar elementos decorativos en móviles */
+    /* Reducir tamaño de elementos decorativos */
+    .fixed.z-0 svg.absolute {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+    }
+
+    /* Reducir tamaños de burbujas decorativas */
+    .w-96 {
+        width: 60vw !important;
+        max-width: 240px;
+    }
+
+    .w-80 {
+        width: 50vw !important;
+        max-width: 200px;
+    }
+
+    /* Asegurar que el contenedor de video no desborde */
+    .video-container {
+        width: 100vw;
+    }
+
+    /* Prevenir que los gradientes desborden */
+    section.relative.min-h-screen::after,
+    .h-24.relative.z-20 {
+        width: 100vw;
+    }
+
+    /* Prevenir desbordamiento en la sección de servicios */
+    #servicios-detalle .grid,
+    #soluciones-resumen .grid {
+        width: 100%;
     }
 }
