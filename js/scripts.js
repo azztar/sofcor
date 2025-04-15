@@ -157,6 +157,36 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Mejora para video en dispositivos móviles
+document.addEventListener("DOMContentLoaded", function () {
+  const video = document.getElementById("banner-video");
+  const placeholder = document.querySelector(".video-placeholder");
+  const isMobile = window.innerWidth <= 768;
+
+  if (video && placeholder) {
+    // Ajustes específicos para móviles
+    if (isMobile) {
+      // Forzar la carga del video móvil si estamos en dispositivo móvil
+      const sourceMobile = video.querySelector(
+        'source[media="(max-width: 768px)"]'
+      );
+      if (sourceMobile) {
+        video.src = sourceMobile.src;
+      }
+
+      // Ampliar el tiempo de espera en móviles ya que pueden cargar más lento
+      videoTimeout = setTimeout(function () {
+        if (!videoLoaded) {
+          console.log("Usando fallback: video tardó demasiado en móvil");
+          placeholder.style.opacity = "1";
+        }
+      }, 5000); // 5 segundos en lugar de 3
+    }
+  }
+
+  // ...resto del código existente...
+});
+
 // Añadir esta función en el evento DOMContentLoaded
 
 // Detectar la altura de la pantalla para gestionar la transición del video

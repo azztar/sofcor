@@ -23,10 +23,12 @@
 
         <video id="banner-video" autoplay muted loop playsinline
             class="video-background opacity-0 transition-opacity duration-500">
-            <!-- Versión móvil ultra-ligera -->
+            <!-- Versión móvil ultra-ligera con mayor prioridad -->
             <source src="./assets/videos/banner-video-mobile.mp4" type="video/mp4" media="(max-width: 768px)">
             <!-- Versión escritorio normal -->
             <source src="./assets/videos/banner-video.mp4" type="video/mp4">
+            <!-- Fallback en caso de que los videos no carguen -->
+            Tu navegador no admite videos HTML5.
         </video>
 
         <!-- Overlay para mejorar legibilidad del texto -->

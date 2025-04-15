@@ -895,6 +895,26 @@ section.relative.min-h-screen::after {
     }
 }
 
+/* Mejoras específicas para video en dispositivos móviles */
+@media (max-width: 768px) {
+    .video-background {
+        object-fit: cover !important;
+        height: 100% !important;
+        width: 100% !important;
+        object-position: center center;
+        /* Asegurar que el video siempre cubra toda el área visible */
+        left: 0;
+        top: 0;
+        transform: none;
+    }
+
+    .video-container {
+        position: fixed;
+        height: 100vh;
+        /* Usar viewport height */
+    }
+}
+
 /* Ajustes específicos para el footer en móviles */
 @media (max-width: 640px) {
 
