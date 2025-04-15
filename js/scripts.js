@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function () {
       (entries, observer) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            // Aplicar la clase inmediatamente sin esperar
             entry.target.classList.add("is-visible");
 
             if (entry.target.classList.contains("parallax-element")) {
@@ -82,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
       },
       {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.05, // Reducido de 0.15 a 0.05 para activar más rápido
+        rootMargin: "0px 0px 0px 0px", // Eliminado el margen negativo
       }
     );
 

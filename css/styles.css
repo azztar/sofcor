@@ -343,8 +343,11 @@ nav.floating-nav a.nav-link svg {
 
 .reveal-on-scroll {
     opacity: 0;
-    transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    /* Transición más rápida */
     will-change: opacity, transform;
+    /* Fondo visible desde el principio para evitar líneas negras */
+    background-color: rgba(8, 8, 12, 0.85);
 }
 
 .reveal-on-scroll.is-visible {
@@ -979,6 +982,11 @@ section.relative.min-h-screen::after {
         inset 0 0 0 1px rgba(255, 255, 255, 0.05);
     position: relative;
     overflow: hidden;
+    /* Añadir para evitar flashes durante la transición */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transition: all 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    /* Transición más rápida */
 }
 
 .service-card:hover {
@@ -1098,4 +1106,20 @@ section.relative.min-h-screen::after {
     #soluciones-resumen .grid {
         width: 100%;
     }
+
+    .reveal-on-scroll {
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        /* Aún más rápido en móviles */
+    }
+
+    /* Reducir los delay en móviles */
+    .reveal-on-scroll[style*="transition-delay"] {
+        transition-delay: 0.05s !important;
+    }
+}
+
+/* Añadir pre-carga para los elementos */
+#servicios-detalle {
+    will-change: transform;
+    transform: translateZ(0);
 }
